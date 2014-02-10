@@ -1,0 +1,32 @@
+<section class="chat-app">
+  <div ng-include="'partials/navbar'"></div>
+  <div class="main">
+    <div class="chat">
+      <section auto-scroll="event:scroll">
+        <ul>
+          <li ng-repeat="message in getMessages()">
+            <img class="author-profile" ng-src="{{ message.author.profileImg }}">
+            <div class="message">
+              <div class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</div>
+              <div class="date">{{ message.date | date: 'h:mm' }}</div>
+              <div class="body">{{ message.body }}</div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <footer>
+        <form class="message-form" ng-submit="sendMessage()">
+          <input class="new-message" placeholder="Type your message here..." ng-model="newMessage" ng-trim="false" autofocus>
+        </form>
+      </footer>
+    </div>
+    <aside>
+      <ul>
+        <li ng-repeat="visitor in getVisitors()">
+          <img class="author-profile" ng-src="{{ visitor.profileImg }}">
+          <div class="name" ng-class="{'me':currentUser.name == visitor.name}">{{ visitor.name }}</div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
