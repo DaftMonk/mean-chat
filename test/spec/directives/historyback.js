@@ -12,9 +12,4 @@ describe('Directive: historyBack', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<history-back></history-back>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the historyBack directive');
-  }));
 });
